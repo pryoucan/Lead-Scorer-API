@@ -1,5 +1,7 @@
-let offers = null;
-let leads = [];
-let results = [];
+const storage = {
+  offers: null,
+  leads: [],
+  results: [],
+};
 
-export {offers, leads, results};
+export default storage;
