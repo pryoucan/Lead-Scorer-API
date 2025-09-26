@@ -1,5 +1,5 @@
 Lead Scorer API
-A backend service that scores leads based on a product offer by combining rule-based logic with AI analysis using the Gemini API.
+is a backend service that scores leads based on a product offer by combining rule-based logic with AI analysis using the Gemini API.
 
 Setup and Running the Project
 1. Clone the repository
@@ -23,7 +23,7 @@ For production:
 
 npm start
 
-The server will be running at http://localhost:3000.
+The server should be running at http://localhost:3000.
 
 API Endpoints
 The live, deployed API is available at: https://lead-scorer-api-o2gd.onrender.com
@@ -42,11 +42,13 @@ Example Request:
 POST [https://lead-scorer-api-o2gd.onrender.com/api/offer](https://lead-scorer-api-o2gd.onrender.com/api/offer)
 Content-Type: application/json
 
+```json
 {
   "name": "AI Outreach Automation",
   "value_props": ["24/7 outreach", "6x more meetings"],
   "ideal_use_cases": ["B2B SaaS mid-market"]
 }
+```
 
 2. Upload Leads
 Uploads a CSV file of leads to be scored.
@@ -57,8 +59,8 @@ Body: form-data
 
 Example curl command:
 
-curl -X POST [https://lead-scorer-api-o2gd.onrender.com/api/leads/upload](https://lead-scorer-api-o2gd.onrender.com/api/leads/upload) \
--F "leadsFile=@path/to/your/leads.csv"
+POST [https://lead-scorer-api-o2gd.onrender.com/api/leads/upload](https://lead-scorer-api-o2gd.onrender.com/api/leads/upload) \
+"leadsFile= upload the csv file in 'value'"
 
 3. Score Leads
 Triggers the scoring process for the most recently uploaded leads.
@@ -78,11 +80,3 @@ Example Request:
 
 GET [https://lead-scorer-api-o2gd.onrender.com/api/results](https://lead-scorer-api-o2gd.onrender.com/api/results)
 
-5. Export Results (CSV)
-Downloads the scored leads as a scored_leads.csv file.
-
-Endpoint: GET /api/results/export
-
-Example Request:
-
-GET [https://lead-scorer-api-o2gd.onrender.com/api/results/export](https://lead-scorer-api-o2gd.onren
