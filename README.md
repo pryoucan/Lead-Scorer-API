@@ -31,13 +31,13 @@ Endpoint: POST /offer
 
 Description: Uploads the product offer details.
 
-curl -X POST http://localhost:3000/offer \
--H "Content-Type: application/json" \
--d '{
+POST http://localhost:3000/offer 
+"Content-Type: application/json" 
+{
   "name": "AI Outreach Automation",
   "value_props": ["24/7 outreach", "6x more meetings"],
   "ideal_use_cases": ["B2B SaaS mid-market"]
-}'
+}
 
 2. Upload Leads
 Endpoint: POST /leads/upload
@@ -45,18 +45,18 @@ Endpoint: POST /leads/upload
 Description: Uploads a CSV file of leads.
 
 curl -X POST http://localhost:3000/leads/upload \
--F "leadsFile=@path/to/your/leads.csv"
+"leadsFile=@path/to/your/leads.csv"
 
 3. Score Leads
 Endpoint: POST /score
 
-Description: Triggers the scoring process for the uploaded leads.
+Triggers the scoring process for the uploaded leads.
 
-curl -X POST http://localhost:3000/score
+POST http://localhost:3000/score
 
 4. Get Results (JSON)
 Endpoint: GET /results
 
-Description: Fetches the scored leads as a JSON array.
+Fetches the scored leads as a JSON array.
 
-curl http://localhost:3000/results
+http://localhost:3000/results
