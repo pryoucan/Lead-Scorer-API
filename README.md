@@ -1,16 +1,16 @@
-### Lead Scorer API
-This backend service scores leads based on a product offer by combining rule-based logic + AI analysis from the Gemini API.
+Lead Scorer API
+A backend service that scores leads based on a product offer by combining rule-based logic with AI analysis using the Gemini API.
 
 Setup and Running the Project
 1. Clone the repository
-git clone (https://github.com/pryoucan/Lead-Scorer-API.git)
+git clone [https://github.com/pryoucan/Lead-Scorer-API.git](https://github.com/pryoucan/Lead-Scorer-API.git)
 cd Lead-Scorer-API
 
 2. Install dependencies
 npm install
 
 3. Create an environment file
-Create a .env file in the project's root directory and add your API key.
+Create a .env file in the project's root directory and add your Gemini API key:
 
 GEMINI_API_KEY=your_api_key_here
 
@@ -23,16 +23,25 @@ For production:
 
 npm start
 
-The server should be running at http://localhost:3000.
+The server will be running at http://localhost:3000.
 
 API Endpoints
+The live, deployed API is available at: https://lead-scorer-api-o2gd.onrender.com
+
+Note: All API routes are prefixed with /api. When testing, use the full path (e.g., /api/offer).
+
 1. Set the Offer
-Endpoint: POST /offer
+Uploads the product offer details that will be used for scoring.
 
-Description: Uploads the product offer details.
+Endpoint: POST /api/offer
 
-POST http://localhost:3000/offer 
-"Content-Type: application/json" 
+Body: raw (JSON)
+
+Example Request:
+
+POST [https://lead-scorer-api-o2gd.onrender.com/api/offer](https://lead-scorer-api-o2gd.onrender.com/api/offer)
+Content-Type: application/json
+
 {
   "name": "AI Outreach Automation",
   "value_props": ["24/7 outreach", "6x more meetings"],
@@ -40,23 +49,40 @@ POST http://localhost:3000/offer
 }
 
 2. Upload Leads
-Endpoint: POST /leads/upload
+Uploads a CSV file of leads to be scored.
 
-Description: Uploads a CSV file of leads.
+Endpoint: POST /api/leads/upload
 
-curl -X POST http://localhost:3000/leads/upload \
-"leadsFile=@path/to/your/leads.csv"
+Body: form-data
+
+Example curl command:
+
+curl -X POST [https://lead-scorer-api-o2gd.onrender.com/api/leads/upload](https://lead-scorer-api-o2gd.onrender.com/api/leads/upload) \
+-F "leadsFile=@path/to/your/leads.csv"
 
 3. Score Leads
-Endpoint: POST /score
+Triggers the scoring process for the most recently uploaded leads.
 
-Triggers the scoring process for the uploaded leads.
+Endpoint: POST /api/score
 
-POST http://localhost:3000/score
+Example Request:
+
+POST [https://lead-scorer-api-o2gd.onrender.com/api/score](https://lead-scorer-api-o2gd.onrender.com/api/score)
 
 4. Get Results (JSON)
-Endpoint: GET /results
-
 Fetches the scored leads as a JSON array.
 
-http://localhost:3000/results
+Endpoint: GET /api/results
+
+Example Request:
+
+GET [https://lead-scorer-api-o2gd.onrender.com/api/results](https://lead-scorer-api-o2gd.onrender.com/api/results)
+
+5. Export Results (CSV)
+Downloads the scored leads as a scored_leads.csv file.
+
+Endpoint: GET /api/results/export
+
+Example Request:
+
+GET [https://lead-scorer-api-o2gd.onrender.com/api/results/export](https://lead-scorer-api-o2gd.onren
